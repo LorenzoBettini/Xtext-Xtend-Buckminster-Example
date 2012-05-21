@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.xtext.example.hellobuck/src-gen"
+    editDirectory="/org.xtext.example.hellobuck.edit/src" editorDirectory="/org.xtext.example.hellobuck.editor/src"
+    modelPluginID="org.xtext.example.hellobuck" forceOverwrite="true" modelName="HelloBuck"
+    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.xtext.example.hellobuck.edit"
+    editorPluginID="org.xtext.example.hellobuck.editor" runtimeVersion="2.7">
+  <genPackages prefix="HelloBuck" basePackage="org.xtext.example.hellobuck" disposableProviderFactory="true"
+      ecorePackage="HelloBuck.ecore#/">
+    <genClasses ecoreClass="HelloBuck.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HelloBuck.ecore#//Model/greetings"/>
+    </genClasses>
+    <genClasses ecoreClass="HelloBuck.ecore#//Greeting">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelloBuck.ecore#//Greeting/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

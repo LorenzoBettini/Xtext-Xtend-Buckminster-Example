@@ -1,4 +1,5 @@
-grammar org.xtext.example.hellobuck.HelloBuck with org.eclipse.xtext.common.Terminals
+grammar org.xtext.example.hellobuck.HelloBuck with 
+	org.eclipse.xtext.xbase.Xbase
 
 generate helloBuck "http://www.xtext.org/example/hellobuck/HelloBuck"
 
