@@ -1,0 +1,6 @@
+setpref targetPlatformPath="${target.platform}"
+resolve "${projects.location}/org.xtext.example.hellobuck.buckminster/projects-platform.cquery"
+resolve "${projects.location}/org.xtext.example.hellobuck.buckminster/project.cquery"
+build
+junit -l "org.xtext.example.hellobuck.tests/org.xtext.example.hellobuck.tests.launch"  --flatXML --output "${buckminster.output.root}/test.results/org.xtext.example.hellobuck.tests.launch.xml"
+perform "org.xtext.example.hellobuck.site#site.p2"
