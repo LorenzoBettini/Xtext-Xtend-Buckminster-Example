@@ -7,6 +7,7 @@ import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtext.example.hellobuck.HelloBuckInjectorProvider;
@@ -21,6 +22,11 @@ public class HelloBuckParserTest {
   
   @Inject
   private ValidationTestHelper _validationTestHelper;
+  
+  @BeforeClass
+  public static void setNewLine() {
+    System.setProperty("line.separator", "\n");
+  }
   
   @Test
   public void testParsingAndValidation() {
