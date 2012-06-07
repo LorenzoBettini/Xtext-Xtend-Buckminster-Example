@@ -15,7 +15,7 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.xtext.example.hellobuck.services.HelloBuckGrammarAccess;
 
 @SuppressWarnings("all")
-public class AbstractHelloBuckSyntacticSequencer extends AbstractSyntacticSequencer {
+public class HelloBuckSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected HelloBuckGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
@@ -43,6 +43,11 @@ public class AbstractHelloBuckSyntacticSequencer extends AbstractSyntacticSequen
 		return "";
 	}
 	
+	/**
+	 * OpSingleAssign:
+	 * 	'='
+	 * ;
+	 */
 	protected String getOpSingleAssignToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);

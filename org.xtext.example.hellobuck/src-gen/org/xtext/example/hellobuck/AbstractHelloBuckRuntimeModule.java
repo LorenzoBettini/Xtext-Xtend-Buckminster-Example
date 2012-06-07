@@ -41,12 +41,12 @@ public abstract class AbstractHelloBuckRuntimeModule extends DefaultRuntimeModul
 
 	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ISemanticSequencer> bindISemanticSequencer() {
-		return org.xtext.example.hellobuck.serializer.AbstractHelloBuckSemanticSequencer.class;
+		return org.xtext.example.hellobuck.serializer.HelloBuckSemanticSequencer.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ISyntacticSequencer> bindISyntacticSequencer() {
-		return org.xtext.example.hellobuck.serializer.AbstractHelloBuckSyntacticSequencer.class;
+		return org.xtext.example.hellobuck.serializer.HelloBuckSyntacticSequencer.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment

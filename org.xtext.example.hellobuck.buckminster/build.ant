@@ -15,7 +15,7 @@
 <project name="Buckminster Headless" default="buckminster">
 	<property name="WORKSPACE" location="${ant.file}/../../" />
 	<property name="build.root" location="${WORKSPACE}/buildroot" />
-	<property name="buckminster.home" location="Add_buckminster_headless_location_here" />
+	<property name="buckminster.home" location="/home/bettini/buckminster" />
 	<property name="projects.location" location="${WORKSPACE}" />
 	<property name="commands.file" location="${projects.location}/org.xtext.example.hellobuck.buckminster/commands.txt" />
 	<property name="target.platform" location="target.platform" />

@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package org.xtext.example.hellobuck.helloBuck;
 
