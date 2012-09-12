@@ -18,11 +18,14 @@
 	<property name="buckminster.home" location="/home/bettini/buckminster" />
 	<property name="projects.location" location="${WORKSPACE}" />
 	<property name="commands.file" location="${projects.location}/org.xtext.example.hellobuck.buckminster/commands.txt" />
-	<property name="target.platform" location="target.platform" />
+	<property name="target.platform" value="target.platform" />
 	
 	<target name="buckminster" depends="cleanup" description="description">
 		<echo message="IMPORTANT: Populating an empty target platform may took over 10 minutes."/>
-		<exec executable="${buckminster.home}/buckminster">
+		<condition property="executable.file" value="buckminster.bat" else="buckminster">
+			<os family="windows"/>
+		</condition>
+		<exec executable="${buckminster.home}/${executable.file}">
 			<arg value="-Dprojects.location=${projects.location}" />
 			<arg value="-Dbuckminster.output.root=${build.root}/buckminster.output" />
 			<arg value="-Dbuckminster.temp.root=${build.root}/buckminster.temp" />
