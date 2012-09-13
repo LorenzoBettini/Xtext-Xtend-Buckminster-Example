@@ -20,4 +20,16 @@
          id="org.xtext.example.hellobuck.sdk"
          version="0.0.0"/>
 
+   <includes
+         id="org.eclipse.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.pde"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.platform"
+         version="0.0.0"/>
+
 </feature>
