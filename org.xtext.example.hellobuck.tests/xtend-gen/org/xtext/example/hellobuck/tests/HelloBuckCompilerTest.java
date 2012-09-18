@@ -68,10 +68,10 @@ public class HelloBuckCompilerTest {
     final Procedure1<Result> _function = new Procedure1<Result>() {
         public void apply(final Result it) {
           StringConcatenation _builder = new StringConcatenation();
-          _builder.append("package my.company.greeting;");
+          _builder.append("package greetings;");
           _builder.newLine();
           _builder.newLine();
-          _builder.append("public class MyGreetings {");
+          _builder.append("public class Greetings {");
           _builder.newLine();
           _builder.append("  ");
           _builder.append("public String hellofoo() {");

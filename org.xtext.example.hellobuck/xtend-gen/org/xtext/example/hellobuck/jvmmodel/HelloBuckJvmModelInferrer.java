@@ -58,7 +58,7 @@ public class HelloBuckJvmModelInferrer extends AbstractModelInferrer {
    *            <code>true</code>.
    */
   protected void _infer(final Model element, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase) {
-    JvmGenericType _class = this._jvmTypesBuilder.toClass(element, "my.company.greeting.MyGreetings");
+    JvmGenericType _class = this._jvmTypesBuilder.toClass(element, "greetings.Greetings");
     IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(_class);
     final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
         public void apply(final JvmGenericType it) {
