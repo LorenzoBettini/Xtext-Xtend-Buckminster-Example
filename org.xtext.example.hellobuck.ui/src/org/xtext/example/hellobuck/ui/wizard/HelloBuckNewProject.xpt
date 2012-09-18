@@ -1,0 +1,28 @@
+«IMPORT org::xtext::example::hellobuck::ui::wizard»
+
+«DEFINE main FOR HelloBuckProjectInfo»
+«EXPAND model FOR this»
+«EXPAND workflow FOR this»
+«ENDDEFINE»
+
+«DEFINE model FOR HelloBuckProjectInfo»
+«FILE "src/model/Model.mydsl"-»
+/*
+ * This is an example model
+ */
+Hello Xtext!
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE workflow FOR HelloBuckProjectInfo»
+«FILE "src/Generator.mwe2"-»
+module Generator
+
+var targetDir = "src-gen"
+var modelPath = "src/model"
+
+Workflow {
+	component = @workflow.HelloBuckGenerator auto-inject {}
+}
+«ENDFILE»
+«ENDDEFINE»
