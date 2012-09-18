@@ -16,14 +16,16 @@ Hello foo!
 «ENDDEFINE»
 
 «DEFINE workflow FOR HelloBuckProjectInfo»
-«FILE "src/Generator.mwe2"-»
-module Generator
+«FILE "src/greetings/Main.java"-»
+package greetings;
 
-var targetDir = "src-gen"
-var modelPath = "src/model"
-
-Workflow {
-	component = @workflow.HelloBuckGenerator auto-inject {}
+public class Main {
+	public static void main(String args[]) {
+		Greetings greetings = new Greetings();
+		System.out.println(greetings.helloXtext());
+		System.out.println(greetings.hellofoo());
+	}
 }
+
 «ENDFILE»
 «ENDDEFINE»
