@@ -6,7 +6,7 @@
 «ENDDEFINE»
 
 «DEFINE model FOR HelloBuckProjectInfo»
-«FILE "src/model/Model.mydsl"-»
+«FILE "src/model/Model.greetings"-»
 /*
  * This is an example model
  */
@@ -26,6 +26,5 @@ public class Main {
 		System.out.println(greetings.hellofoo());
 	}
 }
-
 «ENDFILE»
 «ENDDEFINE»
