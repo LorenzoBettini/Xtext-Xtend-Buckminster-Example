@@ -52,8 +52,8 @@ public class HelloBuckCompilerTest {
         }
       };
     this._compilationTestHelper.compile(_builder, new IAcceptor<Result>() {
-        public void accept(Result arg0) {
-          _function.apply(arg0);
+        public void accept(Result t) {
+          _function.apply(t);
         }
     });
   }
@@ -101,8 +101,8 @@ public class HelloBuckCompilerTest {
         }
       };
     this._compilationTestHelper.compile(_builder, new IAcceptor<Result>() {
-        public void accept(Result arg0) {
-          _function.apply(arg0);
+        public void accept(Result t) {
+          _function.apply(t);
         }
     });
   }
