@@ -4,6 +4,8 @@
 package org.xtext.example.hellobuck.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.wizard.IProjectCreator;
+import org.xtext.example.hellobuck.ui.wizard.HelloBuckProjectCreatorCustom;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -11,5 +13,10 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 public class HelloBuckUiModule extends org.xtext.example.hellobuck.ui.AbstractHelloBuckUiModule {
 	public HelloBuckUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+	
+	@Override
+	public Class<? extends IProjectCreator> bindIProjectCreator() {
+		return HelloBuckProjectCreatorCustom.class;
 	}
 }
