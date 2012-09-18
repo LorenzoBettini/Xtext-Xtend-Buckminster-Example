@@ -6,13 +6,14 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="org.xtext.example.hellobuck.ui.HelloBuckExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
-            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
-            default="true"
-            extensions="mydsl"
-            id="org.xtext.example.hellobuck.HelloBuck"
-            matchingStrategy="org.xtext.example.hellobuck.ui.HelloBuckExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
-            name="HelloBuck Editor">
+              class="org.xtext.example.hellobuck.ui.HelloBuckExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+              contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+              default="true"
+              extensions="mydsl"
+              icon="icons/hello.gif"
+              id="org.xtext.example.hellobuck.HelloBuck"
+              matchingStrategy="org.xtext.example.hellobuck.ui.HelloBuckExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
+              name="HelloBuck Editor">
         </editor>
     </extension>
     <extension
@@ -273,6 +274,7 @@
       <wizard
             category="org.eclipse.xtext.projectwiz"
             class="org.xtext.example.hellobuck.ui.HelloBuckExecutableExtensionFactory:org.xtext.example.hellobuck.ui.wizard.HelloBuckNewProjectWizard"
+            icon="icons/hello.gif"
             id="org.xtext.example.hellobuck.ui.wizard.HelloBuckNewProjectWizard"
             name="HelloBuck Project"
             project="true">
