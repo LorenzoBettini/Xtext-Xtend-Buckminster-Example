@@ -89,9 +89,9 @@ public abstract class AbstractHelloBuckRuntimeModule extends DefaultRuntimeModul
 		return org.eclipse.xtext.parser.antlr.AntlrTokenDefProvider.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.validation.JavaValidatorFragment
-	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends org.xtext.example.hellobuck.validation.HelloBuckJavaValidator> bindHelloBuckJavaValidator() {
-		return org.xtext.example.hellobuck.validation.HelloBuckJavaValidator.class;
+	// contributed by org.eclipse.xtext.generator.validation.ValidatorFragment
+	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends org.xtext.example.hellobuck.validation.HelloBuckValidator> bindHelloBuckValidator() {
+		return org.xtext.example.hellobuck.validation.HelloBuckValidator.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment

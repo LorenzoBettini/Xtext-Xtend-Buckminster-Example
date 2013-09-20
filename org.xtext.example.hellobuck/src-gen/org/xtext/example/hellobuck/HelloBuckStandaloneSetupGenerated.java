@@ -41,6 +41,5 @@ public class HelloBuckStandaloneSetupGenerated implements ISetup {
 
 
 
-
 	}
 }
