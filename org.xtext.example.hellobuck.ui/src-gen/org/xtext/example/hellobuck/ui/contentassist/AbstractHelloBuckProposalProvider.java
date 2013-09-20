@@ -5,17 +5,16 @@ package org.xtext.example.hellobuck.ui.contentassist;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.*;
-import org.eclipse.xtext.xbase.ui.contentassist.XbaseProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 
 /**
- * Represents a generated, default implementation of interface {@link IProposalProvider}.
+ * Represents a generated, default implementation of superclass {@link org.eclipse.xtext.xbase.ui.contentassist.XbaseProposalProvider}.
  * Methods are dynamically dispatched on the first parameter, i.e., you can override them 
  * with a more concrete subtype. 
  */
 @SuppressWarnings("all")
-public class AbstractHelloBuckProposalProvider extends XbaseProposalProvider {
+public class AbstractHelloBuckProposalProvider extends org.eclipse.xtext.xbase.ui.contentassist.XbaseProposalProvider {
 		
 	public void completeModel_Greetings(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);

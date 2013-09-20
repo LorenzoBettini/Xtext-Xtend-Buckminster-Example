@@ -30,7 +30,7 @@ public class HelloBuckFactoryImpl extends EFactoryImpl implements HelloBuckFacto
   {
     try
     {
-      HelloBuckFactory theHelloBuckFactory = (HelloBuckFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.xtext.org/example/hellobuck/HelloBuck"); 
+      HelloBuckFactory theHelloBuckFactory = (HelloBuckFactory)EPackage.Registry.INSTANCE.getEFactory(HelloBuckPackage.eNS_URI);
       if (theHelloBuckFactory != null)
       {
         return theHelloBuckFactory;

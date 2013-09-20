@@ -1,7 +1,9 @@
 resolve 'org.xtext.example.hellobuck.buckminster/projects-platform.cquery'
 resolve 'org.xtext.example.hellobuck.buckminster/project.cquery'
+
 clean
 build
+
 perform -D target.os=* -D target.ws=* -D target.arch=* org.xtext.example.hellobuck.site#buckminster.clean
 perform -D target.os=* -D target.ws=* -D target.arch=* org.xtext.example.hellobuck.site#site.p2
 junit -l 'org.xtext.example.hellobuck.tests/org.xtext.example.hellobuck.tests.launch' --stderr -o 'tests_output/org.xtext.example.hellobuck.tests.launch.xml'

@@ -7,20 +7,23 @@ import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtext.example.hellobuck.HelloBuckInjectorProvider;
 import org.xtext.example.hellobuck.helloBuck.Model;
 
-@RunWith(value = XtextRunner.class)
-@InjectWith(value = HelloBuckInjectorProvider.class)
+@RunWith(XtextRunner.class)
+@InjectWith(HelloBuckInjectorProvider.class)
 @SuppressWarnings("all")
 public class HelloBuckParserTest {
   @Inject
+  @Extension
   private ParseHelper<Model> _parseHelper;
   
   @Inject
+  @Extension
   private ValidationTestHelper _validationTestHelper;
   
   @BeforeClass
@@ -38,7 +41,7 @@ public class HelloBuckParserTest {
       _builder.newLine();
       Model _parse = this._parseHelper.parse(_builder);
       this._validationTestHelper.assertNoErrors(_parse);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

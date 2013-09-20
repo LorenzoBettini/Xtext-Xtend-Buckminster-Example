@@ -41,10 +41,11 @@ class HelloBuckCompilerTest {
 		'''
 			Hello foo!
 			Hello bar!
-		'''.compile[assertEquals(
+		'''.assertCompilesTo(
 '''
 package greetings;
 
+@SuppressWarnings("all")
 public class Greetings {
   public String hellofoo() {
     return "Hello foo";
@@ -54,8 +55,7 @@ public class Greetings {
     return "Hello bar";
   }
 }
-'''.toString, generatedCode)
-		]
+''')
 	}
 	
 	

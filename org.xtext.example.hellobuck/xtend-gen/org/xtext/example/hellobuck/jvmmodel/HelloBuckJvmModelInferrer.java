@@ -14,6 +14,7 @@ import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.xtext.example.hellobuck.helloBuck.Greeting;
 import org.xtext.example.hellobuck.helloBuck.Model;
@@ -30,6 +31,7 @@ public class HelloBuckJvmModelInferrer extends AbstractModelInferrer {
    * convenience API to build and initialize JVM types and their members.
    */
   @Inject
+  @Extension
   private JvmTypesBuilder _jvmTypesBuilder;
   
   /**
@@ -61,33 +63,33 @@ public class HelloBuckJvmModelInferrer extends AbstractModelInferrer {
     JvmGenericType _class = this._jvmTypesBuilder.toClass(element, "greetings.Greetings");
     IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(_class);
     final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
-        public void apply(final JvmGenericType it) {
-          EList<Greeting> _greetings = element.getGreetings();
-          for (final Greeting greeting : _greetings) {
-            EList<JvmMember> _members = it.getMembers();
-            String _name = greeting.getName();
-            String _plus = ("hello" + _name);
-            JvmTypeReference _newTypeRef = HelloBuckJvmModelInferrer.this._jvmTypesBuilder.newTypeRef(greeting, String.class);
-            final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
-                public void apply(final JvmOperation it) {
-                  final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
-                      public void apply(final ITreeAppendable it) {
-                        StringConcatenation _builder = new StringConcatenation();
-                        _builder.append("return \"Hello ");
-                        String _name = greeting.getName();
-                        _builder.append(_name, "");
-                        _builder.append("\";");
-                        it.append(_builder);
-                      }
-                    };
-                  HelloBuckJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _function);
+      public void apply(final JvmGenericType it) {
+        EList<Greeting> _greetings = element.getGreetings();
+        for (final Greeting greeting : _greetings) {
+          EList<JvmMember> _members = it.getMembers();
+          String _name = greeting.getName();
+          String _plus = ("hello" + _name);
+          JvmTypeReference _newTypeRef = HelloBuckJvmModelInferrer.this._jvmTypesBuilder.newTypeRef(greeting, String.class);
+          final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
+            public void apply(final JvmOperation it) {
+              final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+                public void apply(final ITreeAppendable it) {
+                  StringConcatenation _builder = new StringConcatenation();
+                  _builder.append("return \"Hello ");
+                  String _name = greeting.getName();
+                  _builder.append(_name, "");
+                  _builder.append("\";");
+                  it.append(_builder);
                 }
               };
-            JvmOperation _method = HelloBuckJvmModelInferrer.this._jvmTypesBuilder.toMethod(greeting, _plus, _newTypeRef, _function);
-            HelloBuckJvmModelInferrer.this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
-          }
+              HelloBuckJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _function);
+            }
+          };
+          JvmOperation _method = HelloBuckJvmModelInferrer.this._jvmTypesBuilder.toMethod(greeting, _plus, _newTypeRef, _function);
+          HelloBuckJvmModelInferrer.this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
         }
-      };
+      }
+    };
     _accept.initializeLater(_function);
   }
   
