@@ -4,6 +4,7 @@ resolve "${projects.location}/org.xtext.example.hellobuck.buckminster/projects-p
 resolve "${projects.location}/org.xtext.example.hellobuck.buckminster/project.cquery"
 
 launch --stderr --stdout -l "org.xtext.example.hellobuck/XtendCompiler.launch"
+launch --stderr --stdout -l "org.xtext.example.hellobuck.ui/XtendCompiler.launch"
 launch --stderr --stdout -l "org.xtext.example.hellobuck.tests/XtendCompiler.launch"
 
 build
