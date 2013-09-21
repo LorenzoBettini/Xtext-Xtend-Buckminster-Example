@@ -27,40 +27,68 @@
 	<property name="eclipse.p2.mirrors" value="true" />
 	<property name="java.net.preferIPv4Stack" value="true" />
 
-	<target name="buckminster" depends="cleanup,install.buckminster.headless" description="description">
-		<echo message="IMPORTANT: Populating an empty target platform may took over 10 minutes." />
-		<condition property="executable.file" value="buckminster.bat" else="buckminster">
-			<os family="windows" />
-		</condition>
-		<java fork="true" dir="${buckminster.home}" logError="true" classname="org.eclipse.core.launcher.Main" failonerror="true">
-			<classpath>
-				<fileset dir="${buckminster.home}/plugins">
-					<include name="org.eclipse.equinox.launcher_*.jar" />
-				</fileset>
-			</classpath>
-			<arg line='-update' />
-			<arg line='-data "${build.root}/buckminster.workspace"' />
-			<arg line='-configuration "${build.root}/configuration"' />
-			<arg line='--script "${commands.file}"' />
-			<sysproperty key="projects.location" value="${projects.location}" />
-			<sysproperty key="buckminster.output.root" value="${build.root}/buckminster.output" />
-			<sysproperty key="buckminster.temp.root" value="${build.root}/buckminster.temp" />
-			<sysproperty key="target.platform" value="${build.root}/${target.platform}" />
-			<jvmarg line=" -Xms256m -Xmx512m" />
-		</java>
+	<property name="build.properties" location="${projects.location}/org.xtext.example.hellobuck.buckminster/buckminster.properties" />
 
-		<!-- <exec executable="${buckminster.home}/${executable.file}">
-					<arg value="-Dprojects.location=${projects.location}" />
-					<arg value="-Dbuckminster.output.root=${build.root}/buckminster.output" />
-					<arg value="-Dbuckminster.temp.root=${build.root}/buckminster.temp" />
-					<arg value="-Dtarget.platform=${build.root}/${target.platform}" />
-					<arg line="-data '${build.root}/buckminster.workspace'" />
-					<arg line="-configuration '${build.root}/configuration'" />
-					<arg line="-S '${commands.file}'" />
-				</exec> -->
-		<echo message=" " />
-		<echo message="Updatesite output in: ${build.root}/buckminster.output/org.xtext.example.hellobuck.site_*-eclipse.feature/site.p2/" />
+	<target name="buckminster" depends="cleanup,install.buckminster.headless" description="description">
+		<antcall target="buckminster-resolve" />
+		<antcall target="buckminster-first-build" />
+		<antcall target="buckminster-build-and-test" />
 	</target>
+
+	<target name="buckminster-resolve" description="description">
+		<echo message="IMPORTANT: Populating an empty target platform may took over 10 minutes." />
+		<echo message="properties file: ${build.properties}" />
+
+		<run_buckminster commandsfile="${projects.location}/org.xtext.example.hellobuck.buckminster/commands-resolve.txt" propertiesfile="${build.properties}"/>
+	</target>
+
+	<target name="buckminster-first-build" description="description">
+		<run_buckminster 
+			commandsfile="${projects.location}/org.xtext.example.hellobuck.buckminster/commands-first-build.txt" 
+			propertiesfile="${build.properties}"
+			failonerror="false"
+		/>
+	</target>
+
+	<target name="buckminster-build-and-test" description="description">
+		<run_buckminster commandsfile="${projects.location}/org.xtext.example.hellobuck.buckminster/commands-build-and-test.txt" propertiesfile="${build.properties}"/>
+		<echo message=" " />
+		<echo message="Updatesite output in: ${build.root}/buckminster.output/it.xsemantics.site_*-eclipse.feature/site.p2/" />
+	</target>
+
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: run_buckminster
+          pass the commandsfile to execute      
+         = = = = = = = = = = = = = = = = = -->
+	<macrodef name="run_buckminster">
+		<attribute name="commandsfile" default="default" />
+		<attribute name="propertiesfile" default="default" />
+		<attribute name="failonerror" default="true" />
+		<sequential>
+			<java fork="true" dir="${buckminster.home}" logError="true" classname="org.eclipse.core.launcher.Main" failonerror="@{failonerror}">
+				<classpath>
+					<fileset dir="${buckminster.home}/plugins">
+						<include name="org.eclipse.equinox.launcher_*.jar" />
+					</fileset>
+				</classpath>
+				<arg line='-update' />
+				<arg line='-data "${build.root}/buckminster.workspace"' />
+				<arg line='-configuration "${build.root}/configuration"' />
+				<arg line='--properties "@{propertiesfile}"' />
+				<arg line='--script "@{commandsfile}"' />
+				<!-- <arg line='-L ant=INFO' />  -->
+				<!-- <arg line='-L DEBUG' /> -->
+				<sysproperty key="projects.location" value="${projects.location}" />
+				<sysproperty key="buckminster.output.root" value="${build.root}/buckminster.output" />
+				<sysproperty key="buckminster.temp.root" value="${build.root}/buckminster.temp" />
+				<sysproperty key="target.platform" value="${build.root}/${target.platform}" />
+				<sysproperty key="eclipse.download" value="http://download.eclipse.org" />
+				<sysproperty key="eclipse.p2.mirrors" value="${eclipse.p2.mirrors}" />
+				<sysproperty key="java.net.preferIPv4Stack" value="${java.net.preferIPv4Stack}" />
+				<jvmarg line=" -Xms256m -Xmx512m" />
+			</java>
+		</sequential>
+	</macrodef>
 
 	<target name="cleanup">
 		<delete failonerror="false" includeemptydirs="true">
