@@ -44,15 +44,17 @@
 	</target>
 
 	<target name="buckminster-first-build" description="description">
-		<echo message="NOTE: Expect compilation errors during this first build." />
+		<echo message="NOTE: Expect Java compilation errors during this first build." />
 		<run_buckminster 
 			commandsfile="${projects.location}/org.xtext.example.hellobuck.buckminster/commands-first-build.txt" 
 			propertiesfile="${build.properties}"
 			failonerror="false"
 		/>
+		<echo message="NOTE: Java compilation errors were expected." />
 	</target>
 
 	<target name="buckminster-xtend-compile" description="description">
+		<echo message="NOTE: Expect Java compilation errors during this build." />
 		<xtend-compile projectname="org.xtext.example.hellobuck" />
 		<xtend-compile projectname="org.xtext.example.hellobuck.ui" />
 		<xtend-compile projectname="org.xtext.example.hellobuck.tests" />
