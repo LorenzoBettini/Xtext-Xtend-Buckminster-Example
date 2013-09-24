@@ -2,7 +2,7 @@ launch --stderr --stdout -l "org.xtext.example.hellobuck/XtendCompiler.launch"
 launch --stderr --stdout -l "org.xtext.example.hellobuck.ui/XtendCompiler.launch"
 launch --stderr --stdout -l "org.xtext.example.hellobuck.tests/XtendCompiler.launch"
 
-build
+build --clean
 
 junit -l "org.xtext.example.hellobuck.tests/org.xtext.example.hellobuck.tests.launch"  --flatXML --output "${buckminster.output.root}/test.results/org.xtext.example.hellobuck.tests.launch.xml"
 junit -l "org.xtext.example.hellobuck.tests/org.xtext.example.hellobuck.ui.tests.launch"  --flatXML --output "${buckminster.output.root}/test.results/org.xtext.example.hellobuck.ui.tests.launch.xml"
