@@ -4,24 +4,30 @@
 package org.xtext.example.hellobuck.ui.labeling
 
 import com.google.inject.Inject
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
+import org.eclipse.xtext.xbase.ui.labeling.XbaseLabelProvider
+import org.xtext.example.hellobuck.helloBuck.Greeting
+import org.xtext.example.hellobuck.util.HelloBuckUtil
 
 /**
  * Provides labels for a EObjects.
  * 
  * see http://www.eclipse.org/Xtext/documentation.html#labelProvider
  */
-class HelloBuckLabelProvider extends org.eclipse.xtext.xbase.ui.labeling.XbaseLabelProvider {
+class HelloBuckLabelProvider extends XbaseLabelProvider {
+
+	@Inject extension HelloBuckUtil
 
 	@Inject
-	new(org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider delegate) {
+	new(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
 	}
 
 	// Labels and icons can be computed like this:
 	
-//	def text(Greeting ele) {
-//		'A greeting to ' + ele.name
-//	}
+	def text(Greeting ele) {
+		'A greeting to ' + ele.helloRepresentation
+	}
 //
 //	def image(Greeting ele) {
 //		'Greeting.gif'
