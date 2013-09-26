@@ -36,7 +36,7 @@
 			</args>
 		</run_buckminster>
 		<echo message=" " />
-		<echo message="Updatesite output in: ${build.root}/buckminster.output/it.xsemantics.site_*-eclipse.feature/site.p2/" />
+		<echo message="Updatesite output in: ${build.root}/buckminster.output/org.xtext.example.hellobuck.site_*-eclipse.feature/site.p2/" />
 	</target>
 
 	<macrodef name="run_buckminster">
