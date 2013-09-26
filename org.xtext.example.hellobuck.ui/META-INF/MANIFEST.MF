@@ -28,5 +28,6 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.xtext.example.hellobuck.ui.contentassist,
  org.xtext.example.hellobuck.ui.contentassist.antlr,
  org.xtext.example.hellobuck.ui.internal,
- org.xtext.example.hellobuck.ui.quickfix
+ org.xtext.example.hellobuck.ui.quickfix,
+ org.xtext.example.hellobuck.ui.util
 Bundle-Activator: org.xtext.example.hellobuck.ui.internal.HelloBuckActivator
