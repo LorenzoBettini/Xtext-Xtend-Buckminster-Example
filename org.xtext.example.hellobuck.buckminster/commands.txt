@@ -3,12 +3,20 @@ setpref targetPlatformPath="${target.platform}"
 resolve "${projects.location}/org.xtext.example.hellobuck.buckminster/projects-platform.cquery"
 resolve "${projects.location}/org.xtext.example.hellobuck.buckminster/project.cquery"
 
+clean
+build --continueonerror
+
 launch --stderr --stdout -l "org.xtext.example.hellobuck/XtendCompiler.launch"
+build --continueonerror
+
 launch --stderr --stdout -l "org.xtext.example.hellobuck.ui/XtendCompiler.launch"
+build --continueonerror
+
 launch --stderr --stdout -l "org.xtext.example.hellobuck.tests/XtendCompiler.launch"
 
-build
+build --clean
 
 junit -l "org.xtext.example.hellobuck.tests/org.xtext.example.hellobuck.tests.launch"  --flatXML --output "${buckminster.output.root}/test.results/org.xtext.example.hellobuck.tests.launch.xml"
+junit -l "org.xtext.example.hellobuck.tests/org.xtext.example.hellobuck.ui.tests.launch"  --flatXML --output "${buckminster.output.root}/test.results/org.xtext.example.hellobuck.ui.tests.launch.xml"
 
 perform "org.xtext.example.hellobuck.site#site.p2"

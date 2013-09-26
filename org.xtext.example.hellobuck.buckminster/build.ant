@@ -12,7 +12,7 @@
 		commands.file		What to do?
 							Default: ${projects.location}/org.xtext.example.hellobuck.buckminster/commands.txt
 -->
-<project name="Buckminster Headless" default="buckminster">
+<project name="Buckminster Headless" default="build">
 	<property name="WORKSPACE" location="${ant.file}/../../" />
 	<property name="build.root" location="${WORKSPACE}/buildroot" />
 	<property name="buckminster.home" location="${user.home}/buckminster" />
@@ -29,6 +29,10 @@
 
 	<property name="build.properties" location="${projects.location}/org.xtext.example.hellobuck.buckminster/buckminster.properties" />
 
+	<target name="build" depends="cleanup,clean-xtend-gen,install.buckminster.headless" description="description">
+		<antcall target="buckminster-build-and-test" />
+	</target>
+	
 	<target name="buckminster" depends="cleanup,clean-xtend-gen,install.buckminster.headless" description="description">
 		<antcall target="buckminster-resolve" />
 		<antcall target="buckminster-first-build" />
@@ -61,7 +65,7 @@
 	</target>
 
 	<target name="buckminster-build-and-test" description="description">
-		<run_buckminster commandsfile="${projects.location}/org.xtext.example.hellobuck.buckminster/commands-build-and-test.txt" propertiesfile="${build.properties}"/>
+		<run_buckminster commandsfile="${projects.location}/org.xtext.example.hellobuck.buckminster/commands.txt" propertiesfile="${build.properties}"/>
 		<echo message=" " />
 		<echo message="Updatesite output in: ${build.root}/buckminster.output/it.xsemantics.site_*-eclipse.feature/site.p2/" />
 	</target>
