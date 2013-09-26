@@ -4,6 +4,10 @@ resolve "${projects.location}/org.xtext.example.hellobuck.buckminster/projects-p
 resolve "${projects.location}/org.xtext.example.hellobuck.buckminster/project.cquery"
 
 clean
+
+# this first Java build will fail with compilation errors, since Xtend
+# classes have not been compiled yet.  However, it will compile some
+# Java classes so that we will be able to compile Xtend classes
 build --continueonerror
 
 launch --stderr --stdout -l "org.xtext.example.hellobuck/XtendCompiler.launch"

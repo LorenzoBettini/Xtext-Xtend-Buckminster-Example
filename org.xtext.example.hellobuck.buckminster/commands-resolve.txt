@@ -1,4 +1,0 @@
-setpref targetPlatformPath="${target.platform}"
-
-resolve "${projects.location}/org.xtext.example.hellobuck.buckminster/projects-platform.cquery"
-resolve "${projects.location}/org.xtext.example.hellobuck.buckminster/project.cquery"
