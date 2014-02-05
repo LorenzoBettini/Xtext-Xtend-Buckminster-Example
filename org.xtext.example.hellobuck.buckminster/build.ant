@@ -19,6 +19,7 @@
 	<property name="projects.location" location="${WORKSPACE}" />
 	<property name="commands.file" location="${projects.location}/org.xtext.example.hellobuck.buckminster/commands.txt" />
 	<property name="target.platform" value="target.platform" />
+	<property name="buckminster.loglevel" value="INFO" />
 	
 	<property name="director.install.dest" location="${user.home}" />
 	<property name="director.dir" location="${director.install.dest}/director" />
@@ -55,6 +56,7 @@
 				<arg line='-data "${build.root}/buckminster.workspace"' />
 				<arg line='-configuration "${build.root}/configuration"' />
 				<arg line='--properties "@{propertiesfile}"' />
+				<arg line='-L ${buckminster.loglevel}' />
 				<arg value="@{command}" />
 				<args />
 				<!-- <arg line='-L ant=INFO' />  -->
