@@ -48,16 +48,15 @@ class HelloBuckJvmModelInferrer extends AbstractModelInferrer {
    		// Here you explain how your model is mapped to Java elements, by writing the actual translation code.
    		
    		// An implementation for the initial hello world example could look like this:
-   		acceptor.accept(element.toClass("greetings.Greetings"))
-   			.initializeLater([
+   		acceptor.accept(element.toClass("greetings.Greetings")) [
    				for (greeting : element.greetings) {
-   					members += greeting.toMethod("hello" + greeting.name, greeting.newTypeRef(typeof(String))) [
+   					members += greeting.toMethod("hello" + greeting.name, typeRef(typeof(String))) [
    						body = [
    							append('''return "Hello «greeting.name»";''')
    						]
    					]
    				}
-   			])
+   			]
    	}
 }
 
