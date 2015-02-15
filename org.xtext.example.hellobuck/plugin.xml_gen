@@ -7,7 +7,7 @@
     <package 
        uri = "http://www.xtext.org/example/hellobuck/HelloBuck" 
        class = "org.xtext.example.hellobuck.helloBuck.HelloBuckPackage"
-       genModel = "org/xtext/example/hellobuck/HelloBuck.genmodel" /> 
+       genModel = "model/generated/HelloBuck.genmodel" /> 
 	
   </extension>
 

@@ -18,6 +18,10 @@ Workflow {
             registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
             registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
         }
+
+        component = DirectoryCleaner {
+            directory = "${runtimeProject}/model/generated"
+        }
     
         component = DirectoryCleaner {
             directory = "${runtimeProject}/src-gen"
@@ -41,7 +45,7 @@ Workflow {
                 fragment = grammarAccess.GrammarAccessFragment auto-inject {}
     
                 // generates Java API for the generated EPackages
-                fragment = ecore.EcoreGeneratorFragment auto-inject {
+                fragment = ecore.EMFGeneratorFragment auto-inject {
                 // referencedGenModels = "
                 //  platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel,
                 //  platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel

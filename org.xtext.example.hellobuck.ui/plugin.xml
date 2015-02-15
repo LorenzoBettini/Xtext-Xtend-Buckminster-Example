@@ -252,7 +252,9 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="org.xtext.example.hellobuck.ui.HelloBuckExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+            class="org.xtext.example.hellobuck.ui.HelloBuckExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+            fileExtensions="greetings"
+            >
       </participant>
    </extension>
    <extension
@@ -467,7 +469,7 @@
    </extension>
    <extension point="org.eclipse.ui.editorActions">
       <editorContribution targetID="org.xtext.example.hellobuck.HelloBuck" 
-                          id="org.xtext.example.hellobuck.HelloBuck.ide.rulerActions">
+                          id="org.xtext.example.hellobuck.HelloBuck.rulerActions">
 	     <action
 	             label="Not Used"
 	             class="org.xtext.example.hellobuck.ui.HelloBuckExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
@@ -478,17 +480,29 @@
    </extension>
    <extension point="org.eclipse.ui.popupMenus">
       <viewerContribution
-         targetID="example.rulerContextMenuId"
-         id="org.xtext.example.hellobuck.HelloBuck.ide.RulerPopupActions">
+         targetID="org.xtext.example.hellobuck.HelloBuck.RulerContext"
+         id="org.xtext.example.hellobuck.HelloBuck.RulerPopupActions">
          <action
             label="Toggle Breakpoint"
             class="org.xtext.example.hellobuck.ui.HelloBuckExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
-            menubarPath="additions"
-            id="org.xtext.example.hellobuck.HelloBuck.ide.rulerContextMenu.toggleBreakpointAction">
+            menubarPath="debug"
+            id="org.xtext.example.hellobuck.HelloBuck.rulerContextMenu.toggleBreakpointAction">
+         </action>
+         <action
+            label="Not used"
+            class="org.xtext.example.hellobuck.ui.HelloBuckExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerEnableDisableBreakpointActionDelegate"
+            menubarPath="debug"
+            id="org.xtext.example.hellobuck.HelloBuck.rulerContextMenu.enableDisableBreakpointAction">
+         </action>
+         <action
+           label="Breakpoint Properties"
+           helpContextId="breakpoint_properties_action_context"
+           class="org.xtext.example.hellobuck.ui.HelloBuckExecutableExtensionFactory:org.eclipse.jdt.debug.ui.actions.JavaBreakpointPropertiesRulerActionDelegate"
+           menubarPath="group.properties"
+           id="org.xtext.example.hellobuck.HelloBuck.rulerContextMenu.openBreapointPropertiesAction">
          </action>
       </viewerContribution>
    </extension>
-   
     <!-- Introduce Local Variable Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
@@ -514,6 +528,30 @@
          </command>
       </menuContribution>
    </extension>  
+   <!-- Open implementation -->
+   <extension point="org.eclipse.ui.handlers">
+      <handler
+            class="org.xtext.example.hellobuck.ui.HelloBuckExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.navigation.OpenImplementationHandler"
+            commandId="org.eclipse.xtext.xbase.ui.OpenImplementationCommand">
+            <activeWhen>
+				<reference
+					definitionId="org.xtext.example.hellobuck.HelloBuck.Editor.opened">
+				</reference>
+			</activeWhen>
+      </handler>
+   </extension>
+ <extension point="org.eclipse.ui.menus">
+       <menuContribution
+            locationURI="menu:navigate?after=open.ext4">
+         <command commandId="org.eclipse.xtext.xbase.ui.OpenImplementationCommand">
+		<visibleWhen checkEnabled="false">
+              <reference
+                 definitionId="org.xtext.example.hellobuck.HelloBuck.Editor.opened">
+              </reference>
+		</visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
 
   <extension point="org.eclipse.compare.contentViewers">
     <viewer id="org.xtext.example.hellobuck.HelloBuck.compare.contentViewers"

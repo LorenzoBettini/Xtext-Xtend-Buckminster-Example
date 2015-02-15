@@ -4,7 +4,7 @@
     editorDirectory="/org.xtext.example.hellobuck.editor/src" modelPluginID="org.xtext.example.hellobuck"
     forceOverwrite="true" modelName="HelloBuck" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.xtext.example.hellobuck.edit"
-    editorPluginID="org.xtext.example.hellobuck.editor" runtimeVersion="2.9">
+    editorPluginID="org.xtext.example.hellobuck.editor" runtimeVersion="2.10">
   <genPackages prefix="HelloBuck" basePackage="org.xtext.example.hellobuck" disposableProviderFactory="true"
       ecorePackage="HelloBuck.ecore#/">
     <genClasses ecoreClass="HelloBuck.ecore#//Model">
