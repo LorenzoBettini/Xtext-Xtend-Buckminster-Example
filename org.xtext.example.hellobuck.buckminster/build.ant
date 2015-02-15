@@ -115,7 +115,7 @@
 				</fileset>
 			</classpath>
 			<arg line='-data "${director.dir}/workspace"' />
-			<arg line="-r http://download.eclipse.org/tools/buckminster/headless-4.3,http://download.cloudsmith.com/buckminster/external-4.3,http://download.eclipse.org/releases/kepler" />
+			<arg line="-r http://download.eclipse.org/tools/buckminster/headless-4.4,http://download.cloudsmith.com/buckminster/external-4.4,http://download.eclipse.org/releases/luna" />
 			<arg line='-d "${buckminster.home}"' />
 			<arg line="-p Buckminster" />
 			<arg line="-i org.eclipse.buckminster.cmdline.product" />
